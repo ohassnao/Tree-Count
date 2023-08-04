@@ -1,0 +1,77 @@
+<mat-card>
+    <mat-card-header>
+  <mat-form-field>
+    <input matInput (keyup)="Filterchange($event)" placeholder="Search" />
+  </mat-form-field>
+  <button style="margin-left: 60%;" (click)="addrecord()" mat-raised-button color="primary">Add Record (+)</button>
+
+    </mat-card-header>
+    <mat-card-content>
+
+    
+
+<table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="DateCreated">
+      <th mat-sort-header mat-header-cell *matHeaderCellDef> DateCreated</th>
+      <td mat-cell *matCellDef="let element">{{element.DateCreated }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Ref">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Ref</th>
+        <td mat-cell *matCellDef="let element">{{element.Ref}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Culture">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Culture</th>
+        <td mat-cell *matCellDef="let element">{{element.Culture}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Variete">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Porte_greffe</th>
+        <td mat-cell *matCellDef="let element">{{element.Porte_greffe}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Porte_greffe">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Porte_greffe</th>
+        <td mat-cell *matCellDef="let element">{{element.Porte_greffe}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Code_Arbre">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Code_Arbre</th>
+        <td mat-cell *matCellDef="let element">{{element.Code_Arbre}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="NomElement">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> NomElement</th>
+        <td mat-cell *matCellDef="let element">{{element.NomElement}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Nombre">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Nombre</th>
+        <td mat-cell *matCellDef="let element">{{element.Nombre}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action</th>
+        <td mat-cell *matCellDef="let element" style="display: flex; align-items: center;">
+
+            <button (click)="editrecorde(element)" mat-raised-button color="primary" style="width: 40px;">Edit</button>
+            <button (click)="deleteRecord(element.ID)" mat-raised-button color="warn" style="width: 40px;">Delete</button>
+          </td>
+      </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
+
+</table>
+
+</mat-card-content>
+<br>
+<mat-card-footer>
+
+    <mat-paginator [pageSizeOptions]="[5,25,100]" showFirstLastButtons></mat-paginator>
+
+</mat-card-footer>
+</mat-card>

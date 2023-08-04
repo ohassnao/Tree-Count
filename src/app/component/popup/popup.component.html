@@ -1,0 +1,59 @@
+<form [formGroup]="myform" (ngSubmit)="Saveinfo()">
+<h1 mat-dialog-title>{{inputdata.title}}</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Date...</mat-label>
+    <input formControlName="DateCreated" matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  
+  <div *ngIf="cropPlotsOptions">
+    <mat-form-field >
+      <mat-label>Parcelle cultural...</mat-label>
+      <mat-select formControlName="ID_ParcelleCulturale" (ngModelChange)="onchange($event)">
+        <mat-option *ngFor="let plot of cropPlotsOptions" [value]="plot.ID">
+          {{plot.Ref}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  
+  <div *ngIf="elementsOptions">
+    <mat-form-field>
+      <mat-label>Element de comptage...</mat-label>
+      <mat-select formControlName="ID_Element">
+        <mat-option *ngFor="let plot of elementsOptions" [value]="plot.ID" >
+          {{plot.Nom}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div *ngIf="TreesOptions">
+    <mat-form-field>
+      <mat-label>Arbre...</mat-label>
+      <mat-select formControlName="ID_Arbre">
+        <div *ngFor="let plot of TreesOptions">
+          <mat-option  [value]="plot.ID" >
+            {{plot.code_arbre}}
+          </mat-option>
+
+        </div>
+        
+      </mat-select>
+    </mat-form-field>
+  </div>
+  
+  <mat-form-field>
+    <mat-label>Nombre...</mat-label>
+    <input matInput type="number" formControlName="Nombre">
+  </mat-form-field>
+  
+  </div>  
+  
+<div mat-dialog-actions>
+    <button mat-raised-button type="submit" color="primary">Save</button>
+  <a (click)="closepopup()" mat-raised-button color="warn">Close</a>
+  <!-- <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button> -->
+</div>
+</form>

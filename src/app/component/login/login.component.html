@@ -1,0 +1,21 @@
+<div class="login-container">
+    <div class="logo">
+      <img src="assets/beeone.png" alt="beeone">
+    </div>
+    <form (ngSubmit)="login()" #loginForm="ngForm">
+      <div>
+        <input type="text" id="username" name="username" placeholder="Votre identifiant" [(ngModel)]="username" required>
+      </div>
+      <div>
+        <input type="password" id="password" name="password" placeholder="Votre mot de passe" [(ngModel)]="password" required>
+      </div>
+      <button type="submit" >Connection</button>
+      <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+      <div class="line"></div>
+      <div class="login-footer">
+        <p>Made by Agridata Consulting <br>
+        BEE ONE, Inc. © Copyright 2023 -Version 1.16.0 All rights reserved</p>
+      </div>
+    </form>
+  </div>
+  
